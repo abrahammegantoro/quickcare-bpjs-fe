@@ -1,29 +1,33 @@
 import type { PropsWithChildren, ReactElement } from 'react';
-import { StyleSheet, useColorScheme } from 'react-native';
+import { ImageBackground, StyleSheet, Text, useColorScheme, View, ViewStyle } from 'react-native';
 import Animated, {
   interpolate,
   useAnimatedRef,
   useAnimatedStyle,
   useScrollViewOffset,
 } from 'react-native-reanimated';
+import background from '@/assets/images/background.png';
+import background_detail from '@/assets/images/background-detail.png';
 
 import { ThemedView } from '@/components/ThemedView';
 
-const HEADER_HEIGHT = 250;
-
 type Props = PropsWithChildren<{
-  headerImage: ReactElement;
-  headerBackgroundColor: { dark: string; light: string };
+  headerContent: ReactElement;
+  hasBorderRadius?: boolean;
+  isHomePage?: boolean;
 }>;
 
 export default function ParallaxScrollView({
   children,
-  headerImage,
-  headerBackgroundColor,
+  headerContent,
+  hasBorderRadius = false,
+  isHomePage = false,
 }: Props) {
   const colorScheme = useColorScheme() ?? 'light';
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
+
+  const HEADER_HEIGHT = isHomePage ? 250 : 200;
 
   const headerAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -47,13 +51,23 @@ export default function ParallaxScrollView({
       <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
         <Animated.View
           style={[
-            styles.header,
-            { backgroundColor: headerBackgroundColor[colorScheme] },
             headerAnimatedStyle,
-          ]}>
-          {headerImage}
+            { height: HEADER_HEIGHT }, // Apply HEADER_HEIGHT as inline style
+            styles.header,
+          ]}
+        >
+          <ImageBackground source={isHomePage ? background : background_detail} style={styles.imageBackground}>
+            {headerContent}
+          </ImageBackground>
         </Animated.View>
-        <ThemedView style={styles.content}>{children}</ThemedView>
+        <ThemedView
+          style={[
+            styles.content,
+            hasBorderRadius && styles.borderRadius, // Conditionally add border radius
+          ]}
+        >
+          {children}
+        </ThemedView>
       </Animated.ScrollView>
     </ThemedView>
   );
@@ -64,13 +78,24 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 250,
     overflow: 'hidden',
+  },
+  imageBackground: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
   },
   content: {
     flex: 1,
-    padding: 32,
+    paddingHorizontal: 32,
+    paddingVertical: 16,
     gap: 16,
     overflow: 'hidden',
+    marginTop: -20,
+    backgroundColor: 'white',
+  },
+  borderRadius: {
+    borderTopLeftRadius: 32,
+    borderTopRightRadius: 32,
   },
 });

@@ -1,70 +1,83 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, Text, View, TouchableOpacity } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import { FontAwesome } from '@expo/vector-icons';
+import { Link } from 'expo-router';
+import { InfoBox } from '@/components/InfoBox';
 
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+      headerContent={
+        <View className='flex gap-8 px-8'>
+          <Text className="text-3xl font-semibold text-white font-poppins">Quick<Text className="underline">Care</Text>.</Text>
+          <View>
+            <Text className="text-3xl font-semibold text-white">Selamat Datang,</Text>
+            <Text className="text-3xl font-semibold text-white">Bobby</Text>
+          </View>
+        </View>
+      }
+      isHomePage
+    >
+      <View className="flex items-center justify-center gap-4">
+        <Text className="font-inter text-[#6D6D6D]">Transformasikan JKN mu dengan <Text className="font-abrilfatface text-[#0176CB] text-xl">QuickCare</Text></Text>
+
+        <View className="w-full p-4 bg-[#DDEEFA] rounded-lg">
+          <Text className="text-lg font-bold text-[#0176CB] font-manrope">Rujukan</Text>
+
+          <Text className="mt-1 text-[#63ABE0] font-manrope">
+            Atur Rujukan Kamu Menggunakan QuickCare.
+          </Text>
+
+          <View className="my-2 border-b border-[#93C6EA]" />
+
+          <View className="space-y-1">
+            <Text className="text-sm text-gray-600 font-manrope">Dengan Rujukan ini kamu dapat</Text>
+            <Text className="text-sm text-gray-600 font-manrope">• Mengajukan Rujukan Baru</Text>
+            <Text className="text-sm text-gray-600 font-manrope">• Memperpanjang Surat Rujukan</Text>
+          </View>
+
+          <Link href="/rujukan" asChild>
+            <TouchableOpacity className="flex-row items-center justify-center px-4 py-2 mt-4 bg-[#015EA2] rounded-full">
+              <Text className="font-semibold text-white font-manrope">Coba Sekarang</Text>
+              <FontAwesome name="arrow-right" size={16} color="white" className="ml-2" />
+            </TouchableOpacity>
+          </Link>
+        </View>
+
+        <View className="w-full p-4 bg-[#DDEEFA] rounded-lg">
+          <Text className="text-lg font-bold text-[#0176CB] font-manrope">Manajemen Obat</Text>
+
+          <Text className="mt-1 text-[#63ABE0] font-manrope">
+            Atur Penggunaan Obat Kamu dengan Mudah.
+          </Text>
+
+          <View className="my-2 border-b border-[#93C6EA]" />
+
+          <View className="space-y-1">
+            <Text className="text-sm text-gray-600 font-manrope">Dengan Manajemen Obat ini kamu dapat</Text>
+            <Text className="text-sm text-gray-600 font-manrope">• Mengatur Penggunaan Obatmu</Text>
+            <Text className="text-sm text-gray-600 font-manrope">• Memantau Penggunaan Obat Keluargamu</Text>
+          </View>
+
+          <Link href="/obat" asChild>
+            <TouchableOpacity className="flex-row items-center justify-center px-4 py-2 mt-4 bg-[#015EA2] rounded-full">
+              <Text className="font-semibold text-white font-manrope">Coba Sekarang</Text>
+              <FontAwesome name="arrow-right" size={16} color="white" className="ml-2" />
+            </TouchableOpacity>
+          </Link>
+        </View>
+
+        <InfoBox
+          backgroundColor="grey"
+          isBorderColor
+          buttonColor="#00B607"
+          text="Semua informasi dan pengingat kamu dapat dilihat melalui pemberitahuan"
+          isTextSmall
+          buttonText="Lihat"
+          linkHref="/pemberitahuan"
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
+      </View>
     </ParallaxScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
