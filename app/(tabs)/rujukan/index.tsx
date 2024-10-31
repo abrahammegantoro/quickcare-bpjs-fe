@@ -19,7 +19,7 @@ export default function Rujukan() {
                     buttonColor="#00B607"
                     text="Ajukan rujukan kamu ke puskesmas"
                     buttonText="Ajukan"
-                    linkHref="/rujukan"
+                    linkHref="/rujukan/pengajuan"
                 />
 
                 <InfoBox
@@ -27,7 +27,7 @@ export default function Rujukan() {
                     buttonColor="#00B607"
                     text="Perpanjang rujukan kamu apabila dibutuhkan"
                     buttonText="Perpanjang"
-                    linkHref="/rujukan"
+                    linkHref="/rujukan/perpanjangan"
                 />
                 
                 <Text className="font-inter text-[#0176CB]">Jadwal Kunjungan Rumahsakit dan Puskesmas</Text>

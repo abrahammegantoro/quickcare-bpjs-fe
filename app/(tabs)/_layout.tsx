@@ -26,7 +26,6 @@ export default function TabLayout() {
         headerShown: false,
       }}
     >
-      {/* Home Tab */}
       <Tabs.Screen
         name="index"
         options={{
@@ -40,7 +39,6 @@ export default function TabLayout() {
         }}
       />
 
-      {/* Obat Tab */}
       <Tabs.Screen
         name="obat/index"
         options={{

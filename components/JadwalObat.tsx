@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Switch, Text, View } from "react-native";
+import { Switch, Text, TouchableOpacity, View } from "react-native";
 
 type Time = {
     time: string;
@@ -11,11 +11,18 @@ type JadwalObatProps = {
     medicine: string;
     condition: string;
     time: Time[];
+    isReminding?: boolean;
+    onRemind?: () => void;
 };
 
-export function JadwalObat(
-    { date, medicine, condition, time }: JadwalObatProps
-) {
+export function JadwalObat({
+    date,
+    medicine,
+    condition,
+    time,
+    isReminding = false, 
+    onRemind,
+}: JadwalObatProps) {
     const [switchStates, setSwitchStates] = useState(
         time.map((t) => t.isActive)
     );
@@ -55,6 +62,15 @@ export function JadwalObat(
                     </View>
                 ))}
             </View>
+
+            {isReminding && (
+                <TouchableOpacity
+                    onPress={onRemind} // Trigger onRemind callback if provided
+                    className="items-center px-4 py-2 mt-4 bg-[#0176CB] rounded-full"
+                >
+                    <Text className="font-bold text-white">Beri Peringatan</Text>
+                </TouchableOpacity>
+            )}
         </View>
     )
 }

@@ -23,7 +23,6 @@ export default function ParallaxScrollView({
   hasBorderRadius = false,
   isHomePage = false,
 }: Props) {
-  const colorScheme = useColorScheme() ?? 'light';
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
 
@@ -87,6 +86,9 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    flexGrow: 1,
+    paddingBottom: 48,
+    height: '100%',
     paddingHorizontal: 32,
     paddingVertical: 16,
     gap: 16,

@@ -19,7 +19,7 @@ export default function Obat() {
                     buttonColor="#00B607"
                     text="Atur semua penggunaan obatmu melalui QuickCare"
                     buttonText="Obat"
-                    linkHref="/obat"
+                    linkHref="/obat/list"
                 />
 
                 <InfoBox
@@ -27,7 +27,7 @@ export default function Obat() {
                     buttonColor="#00B607"
                     text="Pantau penggunaan obat keluargamu"
                     buttonText="Keluarga"
-                    linkHref="/keluarga"
+                    linkHref="/obat/keluarga"
                 />
                 
                 <Text className="font-inter text-[#0176CB]">Jadwal Konsumsi Obat Kamu</Text>

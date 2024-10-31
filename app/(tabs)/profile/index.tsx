@@ -1,5 +1,6 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { Feather, FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default function Profile() {
@@ -59,9 +60,11 @@ export default function Profile() {
                     <Text className="text-lg font-semibold text-white">Edit Profil</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity className="items-center w-full py-3 bg-[#ED4C4D] rounded-full">
-                    <Text className="text-lg font-semibold text-white">Keluar</Text>
-                </TouchableOpacity>
+                <Link href="/login" asChild>
+                    <TouchableOpacity className="items-center w-full py-3 bg-[#ED4C4D] rounded-full">
+                        <Text className="text-lg font-semibold text-white">Keluar</Text>
+                    </TouchableOpacity>
+                </Link>
             </View>
         </ParallaxScrollView>
     );
