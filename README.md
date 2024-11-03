@@ -1,50 +1,165 @@
-# Welcome to your Expo app 👋
+# QuickCare
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+One Stop Solution untuk Akses Kesehatan Lebih Mudah dengan Rujukan Online dan Pengelolaan Obat yang Efisien
 
-## Get started
+## Product Description
 
-1. Install dependencies
+QuickCare adalah solusi kesehatan digital yang mempermudah proses rujukan online dan manajemen obat secara terintegrasi, sehingga pasien dan keluarga dapat mengakses layanan kesehatan dengan cepat dan efektif.
 
-   ```bash
-   npm install
-   ```
+## Features
 
-2. Start the app
+### 1. Rujukan Online
 
-   ```bash
-    npx expo start
-   ```
+**Fitur Rujukan Online memungkinkan pasien untuk mengajukan dan memperpanjang rujukan secara digital**
 
-In the output, you'll find options to open the app in a
+Fitur ini memungkinkan pasien untuk melakukan rujukan secara online dengan mengirimkan video dan keterangan langsung kepada puskesmas, yang dapat berkoordinasi dengan rumah sakit. Pasien juga dapat memperpanjang rujukan secara otomatis melalui integrasi dengan rekam medis, sehingga proses rujukan menjadi lebih cepat dan efisien.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 2. Manajemen Obat
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+**Fitur manajemen obat untuk mengelola informasi obat dan memudahkan pengingat konsumsi obat secara digital**
 
-## Get a fresh project
+Fitur ini terintegrasi dengan rekam medis dan memungkinkan keluarga untuk memantau jadwal konsumsi obat pasien. Sistem akan mencatat inventaris obat, memberi pengingat otomatis sesuai jadwal, dan memungkinkan pasien untuk mengaktifkan atau menonaktifkan obat yang dikonsumsi, membantu memastikan kepatuhan dan kontrol yang lebih baik terhadap pengobatan.
 
-When you're ready, run:
+## Team PIJAR
 
+* Michael Sihotang - Institut Teknologi Bandung
+* Erensi Ratu Chelsia - Institut Teknologi Bandung
+* Abraham Megantoro Samudra - Institut Teknologi Bandung
+
+## Getting Started
+
+### Prerequisites
+
+* Node.js (versi 14 atau lebih baru)
+* Expo CLI
+* Expo Go (untuk emulator dari handphone)
+* Android Studio (untuk emulator Android)
+* Xcode (untuk emulator iOS, hanya di macOS)
+* Git
+
+### Installation & Running the App
+
+1. Clone repository
 ```bash
-npm run reset-project
+git clone https://github.com/abrahammegantoro/quickcare-bpjs-fe
+cd quickcare-bpjs-fe
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies
+```bash
+npm install
+```
 
-## Learn more
+3. Start the development server
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+4. Running on different platforms:
+* Press `a` - untuk menjalankan pada Android emulator
+* Press `i` - untuk menjalankan pada iOS simulator
+* Scan QR code dengan Expo Go app pada perangkat mobile untuk menjalankan pada perangkat fisik
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project Structure
 
-## Join the community
+```
+.
+├── README.md
+├── app
+│   ├── (auth)
+│   │   ├── _layout.tsx
+│   │   ├── login
+│   │   │   └── index.tsx
+│   │   └── register
+│   │       └── index.tsx
+│   ├── (plain)
+│   │   ├── obat
+│   │   │   ├── keluarga
+│   │   │   │   ├── [id]
+│   │   │   │   │   └── index.tsx
+│   │   │   │   └── index.tsx
+│   │   │   └── list
+│   │   │       ├── [id]
+│   │   │       │   └── index.tsx
+│   │   │       ├── add
+│   │   │       │   └── index.tsx
+│   │   │       └── index.tsx
+│   │   ├── pemberitahuan
+│   │   │   └── index.tsx
+│   │   └── rujukan
+│   │       ├── pengajuan
+│   │       │   └── index.tsx
+│   │       └── perpanjangan
+│   │           └── index.tsx
+│   ├── (tabs)
+│   │   ├── _layout.tsx
+│   │   ├── index.tsx
+│   │   ├── obat
+│   │   │   └── index.tsx
+│   │   ├── profile
+│   │   │   └── index.tsx
+│   │   ├── riwayat
+│   │   │   └── index.tsx
+│   │   └── rujukan
+│   │       └── index.tsx
+│   ├── +html.tsx
+│   ├── +not-found.tsx
+│   └── _layout.tsx
+├── app.json
+├── assets
+│   ├── fonts
+│   │   ├── AbrilFatface-Regular.ttf
+│   │   ├── Inter-Regular.ttf
+│   │   ├── Manrope-Regular.ttf
+│   │   ├── Poppins-Bold.ttf
+│   │   ├── Poppins-Regular.ttf
+│   │   └── SpaceMono-Regular.ttf
+│   ├── icon.png
+│   └── images
+│       ├── adaptive-icon.png
+│       ├── background-detail.png
+│       ├── background.png
+│       ├── favicon.png
+│       ├── logo.png
+│       └── splash.png
+├── babel.config.js
+├── components
+│   ├── Collapsible.tsx
+│   ├── ExternalLink.tsx
+│   ├── HelloWave.tsx
+│   ├── InfoBox.tsx
+│   ├── JadwalKunjungan.tsx
+│   ├── JadwalObat.tsx
+│   ├── ParallaxScrollView.tsx
+│   ├── PemberitahuanBox.tsx
+│   ├── RiwayatBox.tsx
+│   ├── ThemedText.tsx
+│   ├── ThemedView.tsx
+│   └── navigation
+│       └── TabBarIcon.tsx
+├── constants
+│   └── Colors.ts
+├── eas.json
+├── expo-env.d.ts
+├── global.css
+├── hooks
+│   ├── useColorScheme.ts
+│   ├── useColorScheme.web.ts
+│   └── useThemeColor.ts
+├── metro.config.js
+├── nativewind-env.d.ts
+├── package-lock.json
+├── package.json
+├── scripts
+│   └── reset-project.js
+├── tailwind.config.js
+└── tsconfig.json
+```
 
-Join our community of developers creating universal apps.
+## Deployment
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+[**Android**](https://expo.dev/accounts/abrahamsamudra/projects/quickcare-bpjs-fe/builds/5f34a6ab-dfad-4871-aca2-ad9af7755177)
+
+## Related Repositories
+
+[**Backend Repository**](https://github.com/abrahammegantoro/quickcare-bpjs-be)
